@@ -13,7 +13,6 @@ document.getElementById('uploadForm').addEventListener('submit', function(e) {
             notify: false
         }
     }));
-};
 
     fetch('https://api.hume.ai/v0/batch/jobs', {
         method: 'POST',
