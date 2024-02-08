@@ -10,7 +10,6 @@ document.getElementById('uploadForm').addEventListener('submit', function(e) {
             burst: {},
             prosody: { granularity: "utterance", window: { length: 4, step: 1 } },
             transcription: null,
-            {"identify_speakers":false,"confidence_threshold":0.5},
             notify: false
         }
     }));
