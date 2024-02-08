@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
             };
 
             // Make the fetch request
-            fetch('https://api.hume.ai/v0/batch/jobs', options)
+            fetch('https://j1xvsqp6g0.execute-api.eu-west-3.amazonaws.com/Prod/proxy', options)
                 .then(response => response.json())
                 .then(response => {
                     // Process the response
