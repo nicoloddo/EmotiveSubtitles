@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append('json', JSON.stringify({
             "models": {
                 "prosody": {
-                    "granularity": "conversational_turn",
+                    "granularity": "utterance",
                     "window": {
                         "length": 4,
                         "step": 4
@@ -316,11 +316,11 @@ document.addEventListener("DOMContentLoaded", function() {
 document.getElementById('loadDemoButton').addEventListener('click', async function() {
     // Set the audio player source to the demo audio file
     const audioPlayer = document.getElementById('audioPlayer');
-    audioPlayer.src = './demo_audio.wav';
+    audioPlayer.src = './demo.wav';
 
     try {
         // Fetch the demo predictions JSON
-        const response = await fetch('./demo_predictions.json');
+        const response = await fetch('./demo.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
