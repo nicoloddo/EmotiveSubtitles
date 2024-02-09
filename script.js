@@ -68,12 +68,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Get the form element
     const form = document.getElementById('uploadForm');
 
-    document.getElementById('result').textContent = "Uploading...";
-
     // Add event listener for form submission
     form.addEventListener('submit', function(event) {
         // Prevent the default form submission
         event.preventDefault();
+
+        // Update client
+        document.getElementById('result').textContent = "Uploading...";
 
         // Get the file and API key from the form
         const fileInput = document.getElementById('audio');
@@ -163,12 +164,17 @@ function getColorForValence(valence) {
 }
 
 function getSizeForArousal(arousal) {
-    // Assuming arousal ranges from 0 to 1
-    const minSize = 30; // Default size
-    const maxSize = 90; // Max size
+    // Normalize arousal to a 0 - 1 range (where -1 is 0, 1 is 1, and 0 is 0.5)
+    const normalizedArousal = (arousal + 1) / 2;
 
-    // Calculate the size
-    return minSize + arousal * (maxSize - minSize) + '%';
+    // Define min and max size in vw
+    const minSize = 2; // vw
+    const maxSize = 3.5; // vw
+
+    // Interpolate between min and max size based on normalized arousal
+    const size = minSize + normalizedArousal * (maxSize - minSize);
+
+    return size + 'vw'; // Return size in viewport width units
 }
 
 function syncSubtitles() {
@@ -190,7 +196,7 @@ function syncSubtitles() {
 
             // Set color based on valence and size based on arousal
             subtitlesDiv.style.color = getColorForValence(currentSubtitle.valence);
-            subtitlesDiv.style.width = getSizeForArousal(currentSubtitle.arousal);
+            subtitlesDiv.style.fontSize = getSizeForArousal(currentSubtitle.arousal);
         } else {
             subtitlesDiv.textContent = '';
             emotionsDiv.textContent = '';
