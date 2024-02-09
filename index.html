@@ -8,34 +8,43 @@
         #subtitles {
             font-size: 20px; /* Adjust size as needed */
             color: black; /* Default color, will be changed by JS */
+            width: 40%; /* 40% of the screen width */
+            margin: 20px auto; /* Centering */
+            text-align: center;
         }
         #emotions {
-            font-size: 12px; /* Adjust size as needed */
+            font-size: 12px; /* Smaller size */
             color: grey; /* Default color, can be changed */
+            text-align: center;
+            margin-top: 10px;
+        }
+        .button-container {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <h2>Upload Audio (Max 1MB)</h2>
     <form id="uploadForm">
-        <label for="audioUpload">Select audio to upload:</label>
+        <label for="audio">Select audio to upload:</label>
         <input type="file" id="audio" name="audio" accept="audio/*"><br><br>
         <label for="apiKey">Enter your API Key:</label>
         <input type="text" id="apiKey" name="apiKey"><br><br>
-        <input type="submit" value="Upload Audio">
+        
+        <div class="button-container">
+            <input type="submit" value="Upload Audio">
+            <button id="retrieveButton">Emotional Transcribe</button>
+        </div>
     </form>
-    
-    <!-- Retrieve Button -->
-    <button id="retrieveButton">Emotional Transcribe</button>
-    
+
+    <div id="result"></div>
+
     <!-- Audio Player -->
     <audio id="audioPlayer" controls></audio>
 
     <!-- Subtitles and Emotions -->
     <div id="subtitles"></div>
     <div id="emotions"></div>
-    
-    <div id="result"></div>
     
     <script src="script.js"></script>
 </body>

@@ -125,6 +125,49 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+function getColorForValence(valence) {
+    // Normalize valence to a 0 - 1 range
+    const normalizedValence = (valence + 1) / 2;
+
+    // Define the gradient stops as percentages along with their colors
+    const gradientStops = [
+        { stop: 0.0, color: [35, 21, 87] },   // #231557 at 0%
+        { stop: 0.29, color: [68, 16, 122] }, // #44107A at 29%
+        { stop: 0.67, color: [255, 19, 97] }, // #FF1361 at 67%
+        { stop: 1.0, color: [255, 248, 0] }   // #FFF800 at 100%
+    ];
+
+    // Find the two stops the valence is between and interpolate the color
+    for (let i = 0; i < gradientStops.length - 1; i++) {
+        const currentStop = gradientStops[i];
+        const nextStop = gradientStops[i + 1];
+
+        if (normalizedValence >= currentStop.stop && normalizedValence <= nextStop.stop) {
+            // Calculate how far the valence is between the two stops
+            const mix = (normalizedValence - currentStop.stop) / (nextStop.stop - currentStop.stop);
+
+            // Interpolate the color
+            const color = currentStop.color.map((component, index) => {
+                return Math.round(component + mix * (nextStop.color[index] - component));
+            });
+
+            return `rgb(${color.join(',')})`;
+        }
+    }
+
+    // Fallback color if valence is out of range
+    return 'rgb(0, 0, 0)';
+}
+
+function getSizeForArousal(arousal) {
+    // Assuming arousal ranges from 0 to 1
+    const minSize = 20; // Default size
+    const maxSize = 40; // Max size
+
+    // Calculate the size
+    return minSize + arousal * (maxSize - minSize) + 'px';
+}
+
 function syncSubtitles() {
     const audioPlayer = document.getElementById('audioPlayer');
     const subtitlesDiv = document.getElementById('subtitles');
@@ -133,7 +176,6 @@ function syncSubtitles() {
     audioPlayer.addEventListener('timeupdate', () => {
         let currentTime = audioPlayer.currentTime;
 
-        // Find the current subtitle index based on the audio's currentTime
         currentSubtitleIndex = analysisResults.prosodyPredictions.findIndex(subtitle => {
             return currentTime >= subtitle.time.begin && currentTime <= subtitle.time.end;
         });
@@ -142,8 +184,11 @@ function syncSubtitles() {
             let currentSubtitle = analysisResults.prosodyPredictions[currentSubtitleIndex];
             subtitlesDiv.textContent = currentSubtitle.text;
             emotionsDiv.textContent = currentSubtitle.topEmotions.map(e => e.name).join(', ');
+
+            // Set color based on valence and size based on arousal
+            subtitlesDiv.style.color = getColorForValence(currentSubtitle.valence);
+            subtitlesDiv.style.fontSize = getSizeForArousal(currentSubtitle.arousal);
         } else {
-            // Clear the subtitles and emotions if no matching subtitle is found
             subtitlesDiv.textContent = '';
             emotionsDiv.textContent = '';
         }
