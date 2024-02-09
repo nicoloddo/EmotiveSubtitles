@@ -8,4 +8,4 @@ I did this small project in 2 days to try Hume AI API for emotion recognition. T
 
 The requests are passed through my proxy api on AWS because Hume does not allow CORS. I do not save any data though. If too much traffic is going through my API, it will shut down.
 
-Finally, here's a link to use the project: [EmotiveSubtitles](https://nicoloddo.github.io/EmotiveSubtitles/)
+Finally, here's a link to use the project: [nicoloddo.github.io/EmotiveSubtitles/](https://nicoloddo.github.io/EmotiveSubtitles/)
