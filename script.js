@@ -168,7 +168,7 @@ function getSizeForArousal(arousal) {
     const normalizedArousal = (arousal + 1) / 2;
 
     // Define min and max size in vw
-    const minSize = 2; // vw
+    const minSize = 0.5; // vw
     const maxSize = 3.5; // vw
 
     // Interpolate between min and max size based on normalized arousal
