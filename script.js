@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append('json', JSON.stringify({
             "models": {
                 "prosody": {
-                    "granularity": "utterance",
+                    "granularity": "conversational_turn",
                     "window": {
                         "length": 4,
                         "step": 4
@@ -258,7 +258,7 @@ function retrieveJobResults() {
 
             // Set the result text content
             //document.getElementById('result').innerHTML = `<pre>${prosodyResultText}</pre>`;
-            document.getElementById('result').innerHTML = 'Done.'; 
+            document.getElementById('result').innerHTML = 'Done. You can play the audio now, we will display the subtitles.'; 
 
             syncSubtitles();        
         })
