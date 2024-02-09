@@ -313,3 +313,50 @@ document.addEventListener("DOMContentLoaded", function() {
     retrieveButton.addEventListener('click', retrieveJobResults);
 });
 
+document.getElementById('loadDemoButton').addEventListener('click', async function() {
+    // Set the audio player source to the demo audio file
+    const audioPlayer = document.getElementById('audioPlayer');
+    audioPlayer.src = './demo_audio.wav';
+
+    try {
+        // Fetch the demo predictions JSON
+        const response = await fetch('./demo_predictions.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const demoPredictions = await response.json();
+
+        // Update the analysisResults with the fetched data
+        analysisResults.prosodyPredictions = demoPredictions;
+
+        document.getElementById('result').innerHTML = 'Loaded Demo.'; 
+
+        syncSubtitles(); // Ensure this function is correctly set up to handle the new data
+        
+    } catch (error) {
+        console.error('Failed to load demo predictions:', error);
+        document.getElementById('result').innerHTML = 'Failed to load demo.';
+    }
+});
+
+document.getElementById('downloadAnalysisButton').addEventListener('click', function() {
+    // Convert the data to a JSON string
+    const dataStr = JSON.stringify(analysisResults.prosodyPredictions, null, 2);
+    
+    // Create a Blob from the JSON string
+    const blob = new Blob([dataStr], { type: "application/json" });
+
+    // Create a link element, set the filename, and start the download
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = "analysisResults.json";
+    document.body.appendChild(link); // Append to the document
+    link.click(); // Trigger the download
+
+    // Clean up
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+});
+
+document.getElementById('yourDownloadButtonId').addEventListener('click', function() {

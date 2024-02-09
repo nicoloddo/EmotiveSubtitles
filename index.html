@@ -49,6 +49,7 @@
 </head>
 <body>
     <h1>This is a prototype of emotional subtitle transcription for deaf people.</h1>
+    <h4>Transcription and emotion predictions are done with Hume AI. I perform a simple dimensionality reduction in JavaScript to obtain Valence and Arousal.</h4>
 
     <div class="gradient-example"></div>
     <div class="gradient-labels">
@@ -64,7 +65,11 @@
         <span class="small-arousal">Small Arousal</span>
     </div>
 
-    <h2 style="margin-top: -200px;">Upload Audio (Max 1MB)</h2>
+    <div style="margin-top: -200px;">
+        <button id="loadDemoButton">LOAD DEMO</button>
+        <h2 style="margin-top: 15px;">Or Upload Audio (Max 1MB):</h2>
+    </div>
+    
     <label>We do not store any data. Everything is sent to Hume AI or processed in your own browser locally.</label>
     <form id="uploadForm">
         <label for="audio">Select audio to upload:</label>
@@ -75,6 +80,7 @@
         <div class="button-container">
             <input type="submit" value="Upload Audio">
             <button id="retrieveButton" type="button">Emotional Transcribe</button>
+            <button id="downloadAnalysisButton" type="button">Download Emotional Transcription</button>
         </div>
     </form>
 
