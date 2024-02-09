@@ -1,0 +1,899 @@
+[
+  {
+    "time": {
+      "begin": 4.9433187,
+      "end": 8.293749
+    },
+    "text": "It listen here, Missy. I've been in this line",
+    "valence": 0.17822074313642994,
+    "arousal": 0.18378841914008798,
+    "topEmotions": [
+      {
+        "name": "Calmness",
+        "score": 0.34957507252693176
+      },
+      {
+        "name": "Determination",
+        "score": 0.19530734419822693
+      },
+      {
+        "name": "Concentration",
+        "score": 0.16658230125904083
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 7.654525,
+      "end": 12.201741
+    },
+    "text": "line for an hour And I'm finally here. So you're gonna take my application.",
+    "valence": 0.177667845994621,
+    "arousal": 0.3282298462204585,
+    "topEmotions": [
+      {
+        "name": "Amusement",
+        "score": 0.14374321699142456
+      },
+      {
+        "name": "Disappointment",
+        "score": 0.13709084689617157
+      },
+      {
+        "name": "Determination",
+        "score": 0.1243523359298706
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 11.64309,
+      "end": 16.40601
+    },
+    "text": "application. Does that demand, sir? It's not a",
+    "valence": -0.27776492884257825,
+    "arousal": 0.26014098562023574,
+    "topEmotions": [
+      {
+        "name": "Anger",
+        "score": 0.21063992381095886
+      },
+      {
+        "name": "Disappointment",
+        "score": 0.1429409235715866
+      },
+      {
+        "name": "Contempt",
+        "score": 0.12568676471710205
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 15.688708,
+      "end": 20.245314999999998
+    },
+    "text": "a demand it's a request. When you just take it. Come on. I must see",
+    "valence": -0.23641708149453208,
+    "arousal": 0.34897064832828883,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.2118927389383316
+      },
+      {
+        "name": "Anger",
+        "score": 0.16620765626430511
+      },
+      {
+        "name": "Disappointment",
+        "score": 0.1646394431591034
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 19.765631,
+      "end": 24.125
+    },
+    "text": "see it before I just take it. Oh, we, look at it and",
+    "valence": -0.029336442703099375,
+    "arousal": 0.31944900665360654,
+    "topEmotions": [
+      {
+        "name": "Realization",
+        "score": 0.19291646778583527
+      },
+      {
+        "name": "Awkwardness",
+        "score": 0.15743501484394073
+      },
+      {
+        "name": "Determination",
+        "score": 0.14896132051944733
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 25.354663000000002,
+      "end": 27.980544
+    },
+    "text": "Oh sir. You completely fill this out wrong?",
+    "valence": -0.381711034309867,
+    "arousal": 0.23074304332894424,
+    "topEmotions": [
+      {
+        "name": "Anger",
+        "score": 0.3515996038913727
+      },
+      {
+        "name": "Realization",
+        "score": 0.3385673463344574
+      },
+      {
+        "name": "Disappointment",
+        "score": 0.295565664768219
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 27.819032,
+      "end": 32.352813000000005
+    },
+    "text": "What? No. You fill out the back part, you you're supposed to fill out the front portion only. What do you",
+    "valence": -0.35570591580134553,
+    "arousal": 0.33761428069369614,
+    "topEmotions": [
+      {
+        "name": "Disappointment",
+        "score": 0.3745914101600647
+      },
+      {
+        "name": "Confusion",
+        "score": 0.3715068995952606
+      },
+      {
+        "name": "Surprise (negative)",
+        "score": 0.32741066813468933
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 31.793822000000002,
+      "end": 36.27196
+    },
+    "text": "you talk about? Is fill out... That part. No. No. No. No. You're gonna have to",
+    "valence": -0.3884318532964899,
+    "arousal": 0.4287657534008226,
+    "topEmotions": [
+      {
+        "name": "Anxiety",
+        "score": 0.39619144797325134
+      },
+      {
+        "name": "Distress",
+        "score": 0.39574122428894043
+      },
+      {
+        "name": "Determination",
+        "score": 0.22541499137878418
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 35.712439999999994,
+      "end": 40.440920000000006
+    },
+    "text": "to go back over on the other side. Oh my god. Can you Transfer it",
+    "valence": 0.19353072619050427,
+    "arousal": 0.47310490135736083,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.382414311170578
+      },
+      {
+        "name": "Concentration",
+        "score": 0.351874977350235
+      },
+      {
+        "name": "Excitement",
+        "score": 0.22489747405052185
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 39.54092,
+      "end": 44.264068
+    },
+    "text": "it yourself? No. I can't just transfer it myself. Sir. You gotta do this. Everyone else is",
+    "valence": -0.1315779982028537,
+    "arousal": 0.36146573715126334,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.4860301613807678
+      },
+      {
+        "name": "Disappointment",
+        "score": 0.25376972556114197
+      },
+      {
+        "name": "Distress",
+        "score": 0.19668616354465485
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 43.784177,
+      "end": 48.178683
+    },
+    "text": "is do the same. No. No. You can't write. You don't know how to right? Excuse me, sir.",
+    "valence": -0.12287835930461326,
+    "arousal": 0.3057376684641084,
+    "topEmotions": [
+      {
+        "name": "Confusion",
+        "score": 0.2227536290884018
+      },
+      {
+        "name": "Awkwardness",
+        "score": 0.221970796585083
+      },
+      {
+        "name": "Amusement",
+        "score": 0.2216538041830063
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 48.657475,
+      "end": 52.427787
+    },
+    "text": "What's wrong through pee? I think you're being a little",
+    "valence": -0.31860588053854116,
+    "arousal": 0.2691557480171579,
+    "topEmotions": [
+      {
+        "name": "Confusion",
+        "score": 0.22074705362319946
+      },
+      {
+        "name": "Disgust",
+        "score": 0.16449379920959473
+      },
+      {
+        "name": "Contempt",
+        "score": 0.15073201060295105
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 51.548466,
+      "end": 55.783010000000004
+    },
+    "text": "little condescending. You need to go back over there and fill it out again.",
+    "valence": -0.2646684996188953,
+    "arousal": 0.46142150735683163,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.4271647334098816
+      },
+      {
+        "name": "Anger",
+        "score": 0.37214305996894836
+      },
+      {
+        "name": "Distress",
+        "score": 0.3545732796192169
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 57.63453,
+      "end": 60.34537
+    },
+    "text": "The information is on there here. I'll spill it out",
+    "valence": 0.33362140634326043,
+    "arousal": 0.4251268224681061,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.2415206879377365
+      },
+      {
+        "name": "Interest",
+        "score": 0.2199794352054596
+      },
+      {
+        "name": "Excitement",
+        "score": 0.16994401812553406
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 59.786004,
+      "end": 64.670215
+    },
+    "text": "out right here. No. No No. Because there are other people in line, You have to go get a complete",
+    "valence": -0.11051737521561544,
+    "arousal": 0.41784721118117507,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.46137645840644836
+      },
+      {
+        "name": "Concentration",
+        "score": 0.29188334941864014
+      },
+      {
+        "name": "Awkwardness",
+        "score": 0.1803603172302246
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 63.770215,
+      "end": 68.31827
+    },
+    "text": "complete new application. This will take like a minute. Okay? No. No. Sir. You",
+    "valence": 0.31459585792970446,
+    "arousal": 0.5217722965126677,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.7524299025535583
+      },
+      {
+        "name": "Satisfaction",
+        "score": 0.22599506378173828
+      },
+      {
+        "name": "Interest",
+        "score": 0.17174431681632996
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 67.759496,
+      "end": 72.287654
+    },
+    "text": "You need to get out of. I'm not going anywhere. I'm sitting right now. I'm gonna have to call",
+    "valence": -0.2164109391910662,
+    "arousal": 0.4862807796177912,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.7276512980461121
+      },
+      {
+        "name": "Anger",
+        "score": 0.39705806970596313
+      },
+      {
+        "name": "Distress",
+        "score": 0.2973117530345917
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 71.5701,
+      "end": 76.36553500000001
+    },
+    "text": "call a security because... You... There are hundreds of people waiting in line this day. We're closing",
+    "valence": 0.22354473159690058,
+    "arousal": 0.5220355062543217,
+    "topEmotions": [
+      {
+        "name": "Concentration",
+        "score": 0.5086864233016968
+      },
+      {
+        "name": "Determination",
+        "score": 0.4972405731678009
+      },
+      {
+        "name": "Pride",
+        "score": 0.21263664960861206
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 75.72627,
+      "end": 80.27349000000001
+    },
+    "text": "closing in about half an hour. Well, that's too bad because I'm getting get my license right now. You will",
+    "valence": 0.12371617833162588,
+    "arousal": 0.3689171937372183,
+    "topEmotions": [
+      {
+        "name": "Amusement",
+        "score": 0.20234739780426025
+      },
+      {
+        "name": "Contempt",
+        "score": 0.1586732268333435
+      },
+      {
+        "name": "Anger",
+        "score": 0.15308107435703278
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 79.71397999999999,
+      "end": 83.717235
+    },
+    "text": "will get your license you have to go at another comfort Excuse me?",
+    "valence": -0.27012580620541005,
+    "arousal": 0.43925719679645375,
+    "topEmotions": [
+      {
+        "name": "Anger",
+        "score": 0.5823503732681274
+      },
+      {
+        "name": "Determination",
+        "score": 0.4590774178504944
+      },
+      {
+        "name": "Contempt",
+        "score": 0.3134954869747162
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 83.87495,
+      "end": 88.25865
+    },
+    "text": "Oh, no. Now I'm gonna take this from you because girl are obviously... Hey.",
+    "valence": 0.049027590458298714,
+    "arousal": 0.36364806413252265,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.4881782531738281
+      },
+      {
+        "name": "Awkwardness",
+        "score": 0.20820488035678864
+      },
+      {
+        "name": "Realization",
+        "score": 0.16341112554073334
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 87.77897,
+      "end": 92.17790000000001
+    },
+    "text": "Hey. Give me that back. No. You can go get No. I'm not waiting. I'm not coming back again.",
+    "valence": -0.38366826299815987,
+    "arousal": 0.31811482145991504,
+    "topEmotions": [
+      {
+        "name": "Anger",
+        "score": 0.21267352998256683
+      },
+      {
+        "name": "Distress",
+        "score": 0.20014168322086334
+      },
+      {
+        "name": "Confusion",
+        "score": 0.14124441146850586
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 91.93727,
+      "end": 96.08242
+    },
+    "text": "I don't have time to come back. There's a license will you. Y'all have a license.",
+    "valence": -0.009253571389129467,
+    "arousal": 0.4733575773115493,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.3619405925273895
+      },
+      {
+        "name": "Anger",
+        "score": 0.30711543560028076
+      },
+      {
+        "name": "Contempt",
+        "score": 0.18607395887374878
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 96.001164,
+      "end": 100.24317
+    },
+    "text": "Well, not from this department. You want. Yes, I will. I'll hear as me",
+    "valence": -0.09568373758645791,
+    "arousal": 0.3832697936109292,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.36704352498054504
+      },
+      {
+        "name": "Anger",
+        "score": 0.2039378583431244
+      },
+      {
+        "name": "Contempt",
+        "score": 0.2015993297100067
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 99.44436,
+      "end": 102.955005
+    },
+    "text": "me glasses I want. Oh.",
+    "valence": 0.24237309056085987,
+    "arousal": 0.5073706278898027,
+    "topEmotions": [
+      {
+        "name": "Amusement",
+        "score": 0.44795045256614685
+      },
+      {
+        "name": "Joy",
+        "score": 0.27337586879730225
+      },
+      {
+        "name": "Excitement",
+        "score": 0.2416643500328064
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 105.58588,
+      "end": 108.153964
+    },
+    "text": "Sir, I'm gonna ask you one more time then",
+    "valence": 0.08144775194236564,
+    "arousal": 0.5230492256905829,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.37107565999031067
+      },
+      {
+        "name": "Excitement",
+        "score": 0.16591733694076538
+      },
+      {
+        "name": "Interest",
+        "score": 0.15657982230186462
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 107.83355,
+      "end": 112.13313000000001
+    },
+    "text": "I'm gonna call my supervisor, who will proceed to call security Supervisor.",
+    "valence": 0.19824961160820437,
+    "arousal": 0.5030903037476987,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.9971128702163696
+      },
+      {
+        "name": "Concentration",
+        "score": 0.49363481998443604
+      },
+      {
+        "name": "Pride",
+        "score": 0.34266602993011475
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 111.89229999999999,
+      "end": 116.03271000000001
+    },
+    "text": "Ask your supervisor over. And I'll tell her how you've been behaving.",
+    "valence": -0.1621325644588414,
+    "arousal": 0.16970298824520785,
+    "topEmotions": [
+      {
+        "name": "Disappointment",
+        "score": 0.22302310168743134
+      },
+      {
+        "name": "Realization",
+        "score": 0.20204852521419525
+      },
+      {
+        "name": "Contemplation",
+        "score": 0.16144627332687378
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 116.269376,
+      "end": 120.262584
+    },
+    "text": "Really? And How would you like that? She's not actually in the building. She's",
+    "valence": -0.2095955696731111,
+    "arousal": 0.2019159076498403,
+    "topEmotions": [
+      {
+        "name": "Disappointment",
+        "score": 0.23281116783618927
+      },
+      {
+        "name": "Awkwardness",
+        "score": 0.23111428320407867
+      },
+      {
+        "name": "Surprise (negative)",
+        "score": 0.20205649733543396
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 119.6241,
+      "end": 124.41935000000001
+    },
+    "text": "She's only on the phone? Oh, okay. No So please leave this line",
+    "valence": -0.3823001603975698,
+    "arousal": 0.35709264597453877,
+    "topEmotions": [
+      {
+        "name": "Distress",
+        "score": 0.2435649335384369
+      },
+      {
+        "name": "Anger",
+        "score": 0.19339631497859955
+      },
+      {
+        "name": "Awkwardness",
+        "score": 0.19103994965553284
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 123.51935,
+      "end": 128.23121999999998
+    },
+    "text": "line immediately. No. I'm not going anywhere. I'm staying here. I'm gonna call.",
+    "valence": -0.2885214963249998,
+    "arousal": 0.3380387503896456,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.48390311002731323
+      },
+      {
+        "name": "Anger",
+        "score": 0.3685307800769806
+      },
+      {
+        "name": "Awkwardness",
+        "score": 0.3417367935180664
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 127.751614,
+      "end": 132.21180999999999
+    },
+    "text": "call. Filling out right now. Okay. With this gone out. Just spilling out right now. Just take the goddamn",
+    "valence": 0.5298581683090756,
+    "arousal": 0.4838492041893354,
+    "topEmotions": [
+      {
+        "name": "Determination",
+        "score": 0.7527522444725037
+      },
+      {
+        "name": "Pride",
+        "score": 0.6379958987236023
+      },
+      {
+        "name": "Triumph",
+        "score": 0.4614163339138031
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 131.33413000000002,
+      "end": 136.2928
+    },
+    "text": "goddamn piece of paper. I have it. I'm taking it. This is. Take",
+    "valence": -0.2150185899708996,
+    "arousal": 0.35313073402157064,
+    "topEmotions": [
+      {
+        "name": "Distress",
+        "score": 0.18827006220817566
+      },
+      {
+        "name": "Confusion",
+        "score": 0.16414378583431244
+      },
+      {
+        "name": "Realization",
+        "score": 0.12718570232391357
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 135.57367000000002,
+      "end": 140.20227
+    },
+    "text": "Take one. Get out of my line. It says my line. Get out this all",
+    "valence": -0.30985347594747176,
+    "arousal": 0.5454727763855305,
+    "topEmotions": [
+      {
+        "name": "Anger",
+        "score": 0.8694025874137878
+      },
+      {
+        "name": "Determination",
+        "score": 0.49927085638046265
+      },
+      {
+        "name": "Distress",
+        "score": 0.2668018043041229
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 139.40335000000002,
+      "end": 144.27572999999998
+    },
+    "text": "all you. Sir, you're crossing the mobs department? No. People...",
+    "valence": -0.5133518910352686,
+    "arousal": 0.30169715146248377,
+    "topEmotions": [
+      {
+        "name": "Anger",
+        "score": 0.6838696002960205
+      },
+      {
+        "name": "Disgust",
+        "score": 0.49149271845817566
+      },
+      {
+        "name": "Contempt",
+        "score": 0.47777649760246277
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 143.63716000000002,
+      "end": 148.09286999999998
+    },
+    "text": "People... They just want... You cannot license you filled out the wrong part of the floor.",
+    "valence": -0.3461656986295595,
+    "arousal": 0.34483765175768644,
+    "topEmotions": [
+      {
+        "name": "Anger",
+        "score": 0.5090921521186829
+      },
+      {
+        "name": "Disgust",
+        "score": 0.3461649715900421
+      },
+      {
+        "name": "Contempt",
+        "score": 0.3172647953033447
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 147.93144,
+      "end": 152.15988
+    },
+    "text": "What are you talking about? Transfer over Fill the... Time you're fighting with me,",
+    "valence": -0.4587382121008922,
+    "arousal": 0.4324622207990182,
+    "topEmotions": [
+      {
+        "name": "Distress",
+        "score": 0.4098623991012573
+      },
+      {
+        "name": "Anxiety",
+        "score": 0.24564982950687408
+      },
+      {
+        "name": "Anger",
+        "score": 0.24516664445400238
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 151.91873,
+      "end": 156.21015
+    },
+    "text": "sir. You could finished the form... I did finish one ticket. Oh Get",
+    "valence": -0.19294371563278828,
+    "arousal": 0.5153440429644479,
+    "topEmotions": [
+      {
+        "name": "Anger",
+        "score": 0.3729298710823059
+      },
+      {
+        "name": "Surprise (negative)",
+        "score": 0.21224825084209442
+      },
+      {
+        "name": "Determination",
+        "score": 0.19180187582969666
+      }
+    ]
+  },
+  {
+    "time": {
+      "begin": 155.49247,
+      "end": 157.40139
+    },
+    "text": "Get out. What does wrong you?",
+    "valence": -0.5331981663367258,
+    "arousal": 0.5056325156779593,
+    "topEmotions": [
+      {
+        "name": "Anger",
+        "score": 0.9355512857437134
+      },
+      {
+        "name": "Distress",
+        "score": 0.4160339832305908
+      },
+      {
+        "name": "Disgust",
+        "score": 0.3908880054950714
+      }
+    ]
+  }
+]
