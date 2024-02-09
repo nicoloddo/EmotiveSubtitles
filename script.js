@@ -258,7 +258,7 @@ function retrieveJobResults() {
 
             // Set the result text content
             //document.getElementById('result').innerHTML = `<pre>${prosodyResultText}</pre>`;
-            document.getElementById('result').innerHTML = 'Done. You can play the audio now, we will display the subtitles.'; 
+            document.getElementById('result').innerHTML = 'Done. You can play the audio now, we will display the subtitles. Refresh the page to go again.'; 
 
             syncSubtitles();        
         })
@@ -329,7 +329,7 @@ document.getElementById('loadDemoButton').addEventListener('click', async functi
         // Update the analysisResults with the fetched data
         analysisResults.prosodyPredictions = demoPredictions;
 
-        document.getElementById('result').innerHTML = 'Loaded Demo.'; 
+        document.getElementById('result').innerHTML = 'Loaded Demo. Refresh the page if you want to upload your own.'; 
 
         syncSubtitles(); // Ensure this function is correctly set up to handle the new data
 
