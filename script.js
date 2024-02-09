@@ -332,7 +332,7 @@ document.getElementById('loadDemoButton').addEventListener('click', async functi
         document.getElementById('result').innerHTML = 'Loaded Demo.'; 
 
         syncSubtitles(); // Ensure this function is correctly set up to handle the new data
-        
+
     } catch (error) {
         console.error('Failed to load demo predictions:', error);
         document.getElementById('result').innerHTML = 'Failed to load demo.';
@@ -358,5 +358,3 @@ document.getElementById('downloadAnalysisButton').addEventListener('click', func
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
 });
-
-document.getElementById('yourDownloadButtonId').addEventListener('click', function() {
