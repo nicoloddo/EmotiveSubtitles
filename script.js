@@ -25,12 +25,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const formData = new FormData();
         formData.append('json', JSON.stringify({
             "models": {
-                "burst": {},
                 "prosody": {
                     "granularity": "utterance",
                     "window": {
                         "length": 4,
-                        "step": 1
+                        "step": 4
                     }
                 }
             },
@@ -81,28 +80,39 @@ function retrieveJobResults() {
         .then(response => response.json())
         .then(response => {
             console.log(response);
-            document.getElementById('result').textContent = JSON.stringify(response, null, 2);
 
-            // Save the predictions from prosody and burst models
-            response.forEach(item => {
-                if (item.results && item.results.predictions) {
-                    item.results.predictions.forEach(prediction => {
-                        if (prediction.models.prosody) {
-                            analysisResults.prosodyPredictions.push(...prediction.models.prosody.grouped_predictions);
-                        }
-                        if (prediction.models.burst) {
-                            analysisResults.burstPredictions.push(...prediction.models.burst.grouped_predictions);
-                        }
+            // SELECTION PATTERN INSIDE THE RETURNED RESPONSE FROM HUME AI
+            // The first item in the array is the one we're interested in
+            let firstResult = response[0];
+            if (firstResult && firstResult.results && firstResult.results.predictions) {
+                let firstPrediction = firstResult.results.predictions[0];
+                
+                // Access prosody predictions if available
+                if (firstPrediction.models.prosody && firstPrediction.models.prosody.grouped_predictions.length > 0) {
+                    let prosodyPredictions = firstPrediction.models.prosody.grouped_predictions[0].predictions;
+                    prosodyPredictions.forEach(prediction => {
+                        analysisResults.prosodyPredictions.push(prediction);
                     });
                 }
-            });
+                
+                // Access burst predictions if available
+                if (firstPrediction.models.burst && firstPrediction.models.burst.grouped_predictions.length > 0) {
+                    let burstPredictions = firstPrediction.models.burst.grouped_predictions[0].predictions;
+                    burstPredictions.forEach(prediction => {
+                        analysisResults.burstPredictions.push(prediction);
+                    });
+                }
+            }
 
             // For demonstration purposes, log the saved predictions
             console.log('Prosody Predictions:', analysisResults.prosodyPredictions);
-            console.log('Burst Predictions:', analysisResults.burstPredictions);
+            //console.log('Burst Predictions:', analysisResults.burstPredictions);
             
-            // Optionally, handle the data (e.g., display it in the UI or send it to a server)
-            // ...
+            // Build the string for prosody predictions
+            let prosodyResultText = 'Prosody:\n' + analysisResults.prosodyPredictions.map(p => JSON.stringify(p, null, 2)).join('\n');
+
+            // Set the result text content
+            document.getElementById('result').textContent = prosodyResultText;
         })
         .catch(err => {
             console.error(err);
