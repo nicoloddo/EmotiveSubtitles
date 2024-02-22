@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             console.log('Loaded Demo. Refresh the page if you want to upload your own.'); 
 
+            enablePlayButton();
             syncSubtitles(); // Ensure this function is correctly set up to handle the new data
 
         } catch (error) {
