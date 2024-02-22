@@ -90,13 +90,12 @@ document.addEventListener("DOMContentLoaded", function() {
             // Update the analysisResults with the fetched data
             analysisResults.prosodyPredictions = demoPredictions;
 
-            document.getElementById('result').innerHTML = 'Loaded Demo. Refresh the page if you want to upload your own.'; 
+            console.log('Loaded Demo. Refresh the page if you want to upload your own.'); 
 
             syncSubtitles(); // Ensure this function is correctly set up to handle the new data
 
         } catch (error) {
             console.error('Failed to load demo predictions:', error);
-            document.getElementById('result').innerHTML = 'Failed to load demo.';
         }
     });
 
