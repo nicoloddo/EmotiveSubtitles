@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotive Subtitles by Nicolò Loddo</title>
+    <script src="script.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+</head>
+<body class="font-sans bg-gradient-to-r from-blue-400 to-purple-600 text-white">
+    <header class="bg-opacity-50 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <div class="uppercase text-lg font-bold">Emotive Subtitles</div>
+            <nav class="space-x-4">
+                <a href="https://www.linkedin.com/in/nicoloddo/" class="hover:text-gray-200">by Nicolò Loddo</a>
+                <a href="https://github.com/nicoloddo/EmotiveSubtitles" class="hover:text-gray-200">Github Repo</a>
+                <!-- Add other navigation links as needed -->
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto my-12 p-8 bg-white bg-opacity-25 rounded-lg">
+        <form id="uploadForm" class="flex flex-col space-y-4">
+            <div class="flex items-center space-x-4 w-full">
+                <button id="loadDemoButton" type="button" class="py-2 px-4 bg-purple-600 hover:bg-purple-800 rounded text-white font-bold">Load Example</button>
+                <span class="text-white font-bold mx-2 text-lg self-center">OR</span>
+                <input type="file" id="audio" name="audio" class="p-2 rounded border border-gray-300 flex-grow">
+            </div>
+
+            <div class="flex items-center space-x-4 w-full">
+                <input type="text" id="apiKey" name="apiKey" placeholder="Enter Hume AI API Key" class="p-2 rounded border border-gray-300 flex-grow">
+                <button id="apiInfo" type="button" class="py-2 px-4 rounded border border-gray-300 text-white font-bold bg-gray-000 hover:bg-purple-800 flex-shrink-0">?</button>
+            </div>
+
+            <div class="text-sm mt-1 text-gray-200">
+                We will not have access to this. For more information consult the <a href="#" id="privacyInfoLink" class="text-red-300 hover:text-red-400">Privacy Information</a> or click on the "?" button.
+            </div>     
+
+            <input type="submit" value="Upload Audio" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+        </form>
+
+        <div class="text-center mt-4">
+            <button id="playTrigger" class="py-2 px-4 bg-gray-400 rounded text-sm cursor-not-allowed" disabled>Play</button>
+        </div>
+    </main>
+
+    <div id="playModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="modalTitle" role="dialog" aria-modal="true">
+        <div class="container mx-auto my-10 p-8 bg-white rounded-lg" style="width: 80%; max-width: 1000px;">
+            <div class="flex justify-between items-center">
+                <h2 id="modalTitle" class="text-lg">Audio Playback & Subtitles</h2>
+                <button id="closePlayModal" class="text-black">&times;</button>
+            </div>
+
+            <!-- Audio Player -->
+            <audio id="audioPlayer" controls class="w-full my-4"></audio>
+
+            <!-- Subtitles and Emotions -->
+            <div id="subtitles" class="mt-4 text-gray-800 text-xl"></div>
+            <div id="emotions" class="mt-2 text-gray-600 text-lg"></div>
+
+            <!-- Download Button -->
+            <div class="flex justify-end mt-4">
+                <button id="downloadAnalysisButton" class="py-2 px-6 rounded border border-blue-500 text-blue-500 font-italic bg-gray-000 hover:bg-blue-200 flex-shrink-0">Download Emotional Transcription</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Information Modal -->
+    <div id="privacyModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="privacyModalTitle" role="dialog" aria-modal="true">
+        <div class="container mx-auto my-24 p-8 bg-white rounded-lg">
+            <div class="flex justify-between items-center">
+                <h2 id="privacyModalTitle" class="text-lg">Privacy Information</h2>
+                <button id="closePrivacyModal" class="text-black">&times;</button>
+            </div>
+            <div class="mt-4">
+                <!-- Your privacy information goes here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- API Key Information Modal -->
+    <div id="apiKeyModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="apiKeyModalTitle" role="dialog" aria-modal="true">
+        <div class="container mx-auto my-24 p-8 bg-white rounded-lg">
+            <div class="flex justify-between items-center">
+                <h2 id="apiKeyModalTitle" class="text-lg">API Key Information</h2>
+                <button id="closeApiKeyModal" class="text-black">&times;</button>
+            </div>
+            <div class="mt-4">
+                <!-- Your API key information goes here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-4 bg-opacity-50 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <!-- Additional links or information can go here. -->
+        </div>
+    </footer>
+
+    <script>
+        // Function to open a modal
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+        }
+
+        // Function to close a modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get the hyperlink by its ID
+            const privacyInfoLink = document.getElementById('privacyInfoLink');
+
+            // Event listener for the Privacy Information hyperlink
+            privacyInfoLink.addEventListener('click', (event) => {
+                // Prevent the default anchor behavior
+                event.preventDefault();
+                // Open the modal
+                openModal('privacyModal');
+            });
+
+            // Get close privacy modal button by ID
+            const closePrivacyModalButton = document.getElementById('closePrivacyModal');
+
+            // Event listener for the close button on the privacy modal
+            closePrivacyModalButton.addEventListener('click', () => closeModal('privacyModal'));
+
+            // Get the other buttons and modals by their IDs
+            const playButton = document.getElementById('playTrigger');
+            const playModal = document.getElementById('playModal');
+            const closePlayModalButton = document.getElementById('closePlayModal');
+
+            const apiInfoButton = document.getElementById('apiInfo');
+            const apiKeyModal = document.getElementById('apiKeyModal');
+            const closeApiKeyModalButton = document.getElementById('closeApiKeyModal');
+
+            // Event listener for the Play button
+            playButton.addEventListener('click', () => openModal('playModal'));
+
+            // Event listener for the close button on the play modal
+            closePlayModalButton.addEventListener('click', () => closeModal('playModal'));
+
+            // Event listener for the "?" button
+            apiInfoButton.addEventListener('click', () => openModal('apiKeyModal'));
+
+            // Event listener for the close button on the API key modal
+            closeApiKeyModalButton.addEventListener('click', () => closeModal('apiKeyModal'));
+        });
+    </script>
+
+</body>
+</html>
