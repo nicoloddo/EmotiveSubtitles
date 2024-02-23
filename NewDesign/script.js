@@ -1,6 +1,10 @@
+// Define min and max size in vw of the Arousal
+const arousalMinSize = 1.5; // vw
+const arousalMaxSize = 4; // vw
+
 // Set Retrieval attempts settings
-let maxRetrievalAttempts = 5;
-let attemptIntervalms = 8000;
+const maxRetrievalAttempts = 5;
+const attemptIntervalms = 8000;
 
 // Stores the job id
 let currentJobId = '';
@@ -273,7 +277,7 @@ function retrieveJobResults() {
 
                 // Restore the analysis results
                 initializeAnalysisResults();
-                
+
                 // Collect the predictions
                 getPredictions(response);
                 console.log('Prosody Predictions:', analysisResults.prosodyPredictions);
@@ -403,12 +407,8 @@ function getSizeForArousal(arousal) {
     // Normalize arousal to a 0 - 1 range (where -1 is 0, 1 is 1, and 0 is 0.5)
     const normalizedArousal = (arousal + 1) / 2;
 
-    // Define min and max size in vw
-    const minSize = 1.5; // vw
-    const maxSize = 4; // vw
-
     // Interpolate between min and max size based on normalized arousal
-    const size = minSize + normalizedArousal * (maxSize - minSize);
+    const size = arousalMinSize + normalizedArousal * (arousalMaxSize - arousalMinSize);
 
     return size + 'vw'; // Return size in viewport width units
 }
