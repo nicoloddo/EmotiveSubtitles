@@ -19,6 +19,39 @@
             color: #b91c1c; /* red-700 in Tailwind */
         }
 
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .centered-content {
+            flex: 1;  /* Take available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #subtitles, #emotions {
+            width: 80%;
+            margin: 0 auto; /* Horizontal centering */
+            text-align: center;
+        }
+
+        #subtitles {
+            font-size: 2.2vw;
+            color: black;
+        }
+
+        #emotions {
+            font-size: 1.3vw;
+            color: black;
+            margin-top: 2vh;
+        }
+
+
     </style>
 
 </head>
@@ -65,18 +98,20 @@
     <div id="playModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto" aria-labelledby="modalTitle" role="dialog" aria-modal="true">
         <div class="flex flex-col items-center min-h-screen">
             <!-- Modal Content (Popup) -->
-            <div class="bg-white rounded-lg p-8 mt-10 mb-5" style="width: 80vw; height: 80vh; overflow-y: auto;">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center">
-                        <button id="downloadAnalysisButton" class="py-1 px-3 text-blue-500 text-sm">Download Emotional Transcription</button>
-                    </div>
-                    <h2 id="modalTitle" class="text-lg">Audio Playback & Subtitles</h2>
+            <div class="modal-content bg-white rounded-lg p-8 mt-10 mb-5" style="width: 80vw; height: 80vh; overflow-y: auto;">
+                <div class="flex justify-between items-center" style="width: 97%;">
+                    <!-- Left Aligned Content -->
+                    <button id="downloadAnalysisButton" class="py-1 px-3 text-blue-500 text-sm">Download Emotional Transcription</button>
+
+                    <!-- Right Aligned Content -->
                     <button id="closePlayModal" class="close-button">&times;</button>
                 </div>
 
                 <!-- Subtitles and Emotions -->
-                <div id="subtitles" class="mt-4 text-gray-800 text-xl"></div>
-                <div id="emotions" class="mt-2 text-gray-600 text-lg"></div>
+                <div class="centered-content flex flex-col items-center justify-center">
+                    <div id="subtitles"> </div>
+                    <div id="emotions"> </div>
+                </div>
             </div>
 
             <!-- Audio Player, placed below the popup content -->
