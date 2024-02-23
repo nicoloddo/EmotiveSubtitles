@@ -1,3 +1,7 @@
+// Set Retrieval attempts settings
+let maxRetrievalAttempts = 5;
+let attemptIntervalms = 8000;
+
 // Stores the job id
 let currentJobId = '';
 
@@ -165,6 +169,9 @@ function sendAudio(event) {
         body: formData
     };
 
+    let attemptCount = 0;
+    let intervalId;
+
     // Make the fetch request
     fetch('https://j1xvsqp6g0.execute-api.eu-west-3.amazonaws.com/Prod/proxy', options)
         .then(response => {
@@ -179,14 +186,14 @@ function sendAudio(event) {
             currentJobId = response.job_id;
             // Trigger the retrieveJobResults function every 10 seconds
             intervalId = setInterval(() => {
-                if (attemptCount < 5) { // Max 5 attempts
+                if (attemptCount < maxRetrievalAttempts) { // Max attempts
                     retrieveJobResults();
                     attemptCount++;
                 } else {
                     console.log("Max attempts reached, stopping retries.");
                     clearInterval(intervalId);
                 }
-            }, 8000); // 8 seconds between each attempt
+            }, attemptIntervalms); // Milliseconds between each attempt
         })
         .catch(err => {
             console.error(err);
