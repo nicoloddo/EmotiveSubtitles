@@ -361,6 +361,8 @@ function syncSubtitles() {
             // Set color based on valence and size based on arousal
             subtitlesDiv.style.color = getColorForValence(currentSubtitle.valence);
             subtitlesDiv.style.fontSize = getSizeForArousal(currentSubtitle.arousal);
+            console.log('Valence: ' + currentSubtitle.valence);
+            console.log('Arousal: ' + currentSubtitle.arousal);
         } else {
             subtitlesDiv.textContent = '';
             emotionsDiv.textContent = '';
