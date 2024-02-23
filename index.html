@@ -194,8 +194,15 @@
                 <h2 id="howModalTitle" class="text-lg text-black">How does it work?</h2>
                 <button id="closeHowModal" class="close-button">&times;</button>
             </div>
-            <div class="mt-4">
+            <div class="mt-4 text-black">
                 <!-- How it works information goes here -->
+                This tool works by leveraging Hume AI's API. It was in fact built for me to explore their emotional API.<br>
+                <br>
+                Hume AI transcribes the text of the audio and labels each utterance's emotional content. This content is defined as intensity of 48 different emotions.<br>
+                I then perform a dimensionality reduction to obtain values of Valence and Arousal. To do this, all 48 emotions are labeled for Arousal and Valence. Given the 48 intensities of each emotion inside the utterance, I can therefore perform a weighted average to obtain the Valence and Arousal of each utterance.<br>
+                These values are therefore dependant on the Valence and Arousal that are assigned to each of the 48 emotions.<br>
+                <br>
+                I utilize this approach because I cannot set up a server of my own to perform complex dimensionality reduction, and this approach directly gives me 2 intuitive dimensions to visualize. I will make it possible to modify the values of Arousal and Valence of each emotion, in the meantime, the default values utilized right now are approximately informed by scientific research.
             </div>
         </div>
     </div>
@@ -207,8 +214,11 @@
                 <h2 id="privacyModalTitle" class="text-lg text-black">Privacy Information</h2>
                 <button id="closePrivacyModal" class="close-button">&times;</button>
             </div>
-            <div class="mt-4">
+            <div class="mt-4 text-black">
                 <!-- Your privacy information goes here -->
+                I will not have access to your API Key and I do not store any user data. The requests are passed to my proxy server, which directly passes them to the Hume AI API. This is due to the fact that Hume AI does not allow requests from your browser.<br>
+                <br>
+                Everything you fill in this site is passed through to Hume AI without storing nor accessing anything. Your key and recordings will not be accessible by me.
             </div>
         </div>
     </div>
@@ -220,8 +230,12 @@
                 <h2 id="apiKeyModalTitle" class="text-lg text-black">API Key Information</h2>
                 <button id="closeApiKeyModal" class="close-button">&times;</button>
             </div>
-            <div class="mt-4">
+            <div class="mt-4 text-black">
                 <!-- Your API key information goes here -->
+                This tool utilizes Hume AI's API to perform emotional analysis.<br>
+                To obtain an API key, you can Sign Up here: https://beta.hume.ai/ and click on "API Keys" on the sidebar. Copy-paste the key in the field to utilize the tool.<br>
+                <br>
+                I will not have access to your API Key and I do not store any user data. The requests are passed to my proxy server, which directly passes them to the Hume AI API. This is due to the fact that Hume AI does not allow requests from your browser.
             </div>
         </div>
     </div>
