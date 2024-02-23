@@ -142,6 +142,7 @@
             var button = document.getElementById('submitButton');
             button.disabled = false;
             button.innerHTML = 'Error: ' + err + '... Retry?';
+            button.className = originalSubmitButtonClass; // first restore it
             button.classList.replace('bg-blue-500', 'bg-red-500');
             button.classList.replace('hover:bg-blue-700', 'hover:bg-red-700');
         }
