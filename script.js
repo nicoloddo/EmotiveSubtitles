@@ -1,5 +1,5 @@
 // Define min and max size in rem of the Arousal
-let arousalMinSize = 1.8; // rem
+let arousalMinSize = 1.5; // rem
 let arousalMaxSize = 5; // rem
 
 // Set Retrieval attempts settings
