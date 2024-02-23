@@ -122,6 +122,18 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     });
+
+    // Get the close button and the audio player elements
+    var closeButton = document.getElementById('closePlayModal');
+    var audioPlayer = document.getElementById('audioPlayer');
+
+    // Add an event listener to the close button
+    closeButton.addEventListener('click', function() {
+        // Pause the audio player
+        audioPlayer.pause();
+        // Reset the current time to the beginning
+        audioPlayer.currentTime = 0;
+    });
 });
 
 function sendAudio(event) {
@@ -211,7 +223,8 @@ function sendAudio(event) {
                             console.log(result); // Job was successful
                             clearInterval(intervalId); // Clear the interval
                             enablePlayButton();
-                            syncSubtitles(); 
+                            syncSubtitles();
+                            restoreSubmitButton();
                         })
                         .catch(error => {
                             console.error('Attempt failed:', error);
@@ -224,11 +237,10 @@ function sendAudio(event) {
                     showError('Timed out');
                 }
             }, attemptIntervalms);
-            restoreSubmitButton();
         })
         .catch(err => {
             console.error(err);
-            showError(err.message);
+            showError(err.message + ', remember about file size limits!');
         });
 }
 
