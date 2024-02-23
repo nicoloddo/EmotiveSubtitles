@@ -1,10 +1,10 @@
 // Define min and max size in rem of the Arousal
-const arousalMinSize = 1.8; // rem
-const arousalMaxSize = 5; // rem
+let arousalMinSize = 1.8; // rem
+let arousalMaxSize = 5; // rem
 
 // Set Retrieval attempts settings
-const maxRetrievalAttempts = 5;
-const attemptIntervalms = 8000;
+let maxRetrievalAttempts = 5;
+let attemptIntervalms = 8000;
 
 // Stores the job id
 let currentJobId = '';
