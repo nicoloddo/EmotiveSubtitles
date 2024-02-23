@@ -192,6 +192,7 @@ function sendAudio(event) {
     fetch('https://j1xvsqp6g0.execute-api.eu-west-3.amazonaws.com/Prod/proxy', options)
         .then(response => {
             if (response.ok) {
+                console.log('Response was ok. ' + response.status + ' ' + response.statusText)
                 return response.json();
             } else {
                 showError('Audio upload failed: ' + response.status + ' ' + response.statusText);
