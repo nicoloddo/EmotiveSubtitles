@@ -192,9 +192,10 @@ function sendAudio(event) {
     fetch('https://j1xvsqp6g0.execute-api.eu-west-3.amazonaws.com/Prod/proxy', options)
         .then(response => {
             if (response.ok) {
-                console.log('Response was ok. ' + response.status + ' ' + response.statusText)
+                console.log('Response was ok. ' + response.status + ' ' + response.statusText);
                 return response.json();
             } else {
+                console.log('Response was not ok. ' + response.status + ' ' + response.statusText);
                 showError('Audio upload failed: ' + response.status + ' ' + response.statusText);
                 throw new Error('Network response was not ok: ' + response.status + ' ' + response.statusText);
             }
@@ -242,7 +243,7 @@ function retrieveJobResults() {
             }
         };
 
-        fetch(`https://blabla`, options)
+        fetch(`https://j1xvsqp6g0.execute-api.eu-west-3.amazonaws.com/Prod/${currentJobId}`, options)
             .then(response => response.json())
             .then(response => {
                 console.log(response);
