@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById('uploadForm');
 
     // Add event listener for form submission
-    // Add event listener for form submission
     form.addEventListener('submit', function(event) {
         sendAudio(event);
     });
@@ -180,14 +179,14 @@ function sendAudio(event) {
             currentJobId = response.job_id;
             // Trigger the retrieveJobResults function every 10 seconds
             intervalId = setInterval(() => {
-                if (attemptCount < 12) {
+                if (attemptCount < 5) { // Max 5 attempts
                     retrieveJobResults();
                     attemptCount++;
                 } else {
                     console.log("Max attempts reached, stopping retries.");
                     clearInterval(intervalId);
                 }
-            }, 10000);
+            }, 8000); // 8 seconds between each attempt
         })
         .catch(err => {
             console.error(err);
@@ -279,6 +278,10 @@ function disablePlayButton() {
     playButton.setAttribute('disabled', 'true');
 }
 
+function animateButtonLoading(buttonId) {
+    const button = document.getElementById(buttonId);
+    button.classList.add('loading');
+}
 
 function processPrediction(prediction) {
     // Compute valence and arousal

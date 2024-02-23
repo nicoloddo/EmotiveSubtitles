@@ -1,0 +1,9 @@
+.close-button {
+    color: #ef4444; /* red-500 in Tailwind */
+    font-size: 1.5rem; /* similar to text-2xl in Tailwind */
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #b91c1c; /* red-700 in Tailwind */
+}

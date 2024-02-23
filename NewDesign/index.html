@@ -7,6 +7,30 @@
     <script src="script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+    <style>
+        .close-button {
+            color: #ef4444; /* red-500 in Tailwind */
+            font-size: 1.5rem; /* similar to text-2xl in Tailwind */
+            transition: color 0.2s;
+        }
+
+        .close-button:hover {
+            color: #b91c1c; /* red-700 in Tailwind */
+        }
+
+        @keyframes loadingAnimation {
+            from { background-size: 0% 100%; }
+            to { background-size: 100% 100%; }
+        }
+
+        .loading {
+            animation: loadingAnimation 8s linear forwards;
+            background: linear-gradient(to right, #4299e1 0%, #4299e1 100%) no-repeat;
+            color: transparent !important; /* Optional: makes the text transparent during loading */
+        }
+    </style>
+
 </head>
 <body class="font-sans bg-gradient-to-r from-blue-400 to-purple-600 text-white">
     <header class="bg-opacity-50 text-white py-4">
@@ -33,44 +57,49 @@
             </div>
 
             <div class="text-sm mt-1 text-gray-200">
-                We will not have access to this. For more information consult the <a href="#" id="privacyInfoLink" class="text-red-300 hover:text-red-400">Privacy Information</a> or click on the "?" button.
+                I will not have access to your API key (nor to the submitted file). For more information consult the <a href="#" id="privacyInfoLink" class="text-red-300 hover:text-red-400">Privacy Information</a> or click on the "?" button.
             </div>     
 
-            <input type="submit" value="Upload Audio" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+            <input type="submit" id="submitBtn" value="Emotional Transcribe" onclick="animateButtonLoading('submitBtn')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
         </form>
-
-        <div class="text-center mt-4">
-            <button id="playTrigger" class="py-2 px-4 bg-gray-400 rounded text-sm cursor-not-allowed" disabled>Play</button>
-        </div>
     </main>
 
-    <div id="playModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="modalTitle" role="dialog" aria-modal="true">
-        <div class="container mx-auto my-10 p-8 bg-white rounded-lg" style="width: 80%; max-width: 1000px;">
-            <div class="flex justify-between items-center">
-                <h2 id="modalTitle" class="text-lg">Audio Playback & Subtitles</h2>
-                <button id="closePlayModal" class="text-black">&times;</button>
+    <div class="text-center mt-4">
+        <button id="playTrigger" class="py-2 px-4 bg-gray-400 rounded text-sm cursor-not-allowed" disabled>Play</button>
+    </div>
+
+    <!-- Play Modal -->
+    <div id="playModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto" aria-labelledby="modalTitle" role="dialog" aria-modal="true">
+        <div class="flex flex-col items-center min-h-screen">
+            <!-- Modal Content (Popup) -->
+            <div class="bg-white rounded-lg p-8 mt-10 mb-5" style="width: 80vw; height: 80vh; overflow-y: auto;">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <button id="downloadAnalysisButton" class="py-1 px-3 text-blue-500 text-sm">Download Emotional Transcription</button>
+                    </div>
+                    <h2 id="modalTitle" class="text-lg">Audio Playback & Subtitles</h2>
+                    <button id="closePlayModal" class="close-button">&times;</button>
+                </div>
+
+                <!-- Subtitles and Emotions -->
+                <div id="subtitles" class="mt-4 text-gray-800 text-xl"></div>
+                <div id="emotions" class="mt-2 text-gray-600 text-lg"></div>
             </div>
 
-            <!-- Audio Player -->
-            <audio id="audioPlayer" controls class="w-full my-4"></audio>
-
-            <!-- Subtitles and Emotions -->
-            <div id="subtitles" class="mt-4 text-gray-800 text-xl"></div>
-            <div id="emotions" class="mt-2 text-gray-600 text-lg"></div>
-
-            <!-- Download Button -->
-            <div class="flex justify-end mt-4">
-                <button id="downloadAnalysisButton" class="py-2 px-6 rounded border border-blue-500 text-blue-500 font-italic bg-gray-000 hover:bg-blue-200 flex-shrink-0">Download Emotional Transcription</button>
+            <!-- Audio Player, placed below the popup content -->
+            <div class="w-full flex justify-center pb-10">
+                <audio id="audioPlayer" controls class="w-1/2" style="max-width: 800px;"></audio>
             </div>
         </div>
     </div>
+
 
     <!-- Privacy Information Modal -->
     <div id="privacyModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="privacyModalTitle" role="dialog" aria-modal="true">
         <div class="container mx-auto my-24 p-8 bg-white rounded-lg">
             <div class="flex justify-between items-center">
                 <h2 id="privacyModalTitle" class="text-lg">Privacy Information</h2>
-                <button id="closePrivacyModal" class="text-black">&times;</button>
+                <button id="closePrivacyModal" class="close-button">&times;</button>
             </div>
             <div class="mt-4">
                 <!-- Your privacy information goes here -->
@@ -83,7 +112,7 @@
         <div class="container mx-auto my-24 p-8 bg-white rounded-lg">
             <div class="flex justify-between items-center">
                 <h2 id="apiKeyModalTitle" class="text-lg">API Key Information</h2>
-                <button id="closeApiKeyModal" class="text-black">&times;</button>
+                <button id="closeApiKeyModal" class="close-button">&times;</button>
             </div>
             <div class="mt-4">
                 <!-- Your API key information goes here -->
