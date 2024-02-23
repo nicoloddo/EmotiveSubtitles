@@ -10,6 +10,12 @@ let analysisResults = {
   prosodyPredictions: [],
   burstPredictions: []
 };
+function initializeAnalysisResults() {
+    analysisResults = {
+        prosodyPredictions: [],
+        burstPredictions: []
+    };
+}
 
 // Subtitle index
 let currentSubtitleIndex = 0;
@@ -89,6 +95,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const demoPredictions = await response.json();
+
+            // Restore the analysis results
+            initializeAnalysisResults();
 
             // Update the analysisResults with the fetched data
             analysisResults.prosodyPredictions = demoPredictions;
@@ -262,6 +271,10 @@ function retrieveJobResults() {
             .then(response => {
                 console.log(response);
 
+                // Restore the analysis results
+                initializeAnalysisResults();
+                
+                // Collect the predictions
                 getPredictions(response);
                 console.log('Prosody Predictions:', analysisResults.prosodyPredictions);
                 //console.log('Burst Predictions:', analysisResults.burstPredictions);
