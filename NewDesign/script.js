@@ -226,7 +226,6 @@ function sendAudio(event) {
         })
         .catch(err => {
             console.error(err);
-            document.getElementById('result').textContent = 'Error: ' + err.message;
             showError(err.message);
         });
 }
