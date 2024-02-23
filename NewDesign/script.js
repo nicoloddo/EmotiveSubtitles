@@ -137,6 +137,21 @@ function sendAudio(event) {
     const apiKey = document.getElementById('apiKey').value;
     const file = fileInput.files[0];
 
+    // Check if the file is selected
+    if (!file) {
+        console.error("No file selected.");
+        showError('No file selected')
+        return; // Exit the function if no file is selected
+    }
+
+    if (!apiKey) {
+        console.error("No API key.");
+        showError('Missing API key')
+        return; // Exit the function if no API key is given
+    }
+
+    console.log("File to be uploaded:", file);
+
     // Set the audio player source to the uploaded file
     const audioPlayer = document.getElementById('audioPlayer');
     audioPlayer.src = URL.createObjectURL(file);
@@ -176,102 +191,104 @@ function sendAudio(event) {
     // Make the fetch request
     fetch('https://j1xvsqp6g0.execute-api.eu-west-3.amazonaws.com/Prod/proxy', options)
         .then(response => {
-            if (response.ok) {  // Check if the response status is 200 (response.ok is true for status in the range 200-299)
+            if (response.ok) {
                 return response.json();
             } else {
-                throw new Error('Network response was not ok.');
+                showError('Audio upload failed: ' + response.status + ' ' + response.statusText);
+                throw new Error('Network response was not ok: ' + response.status + ' ' + response.statusText);
             }
         })
         .then(response => {
             console.log(response);
             currentJobId = response.job_id;
-            // Trigger the retrieveJobResults function every 10 seconds
             intervalId = setInterval(() => {
-                if (attemptCount < maxRetrievalAttempts) { // Max attempts
-                    console.log('Attempt ' + (attemptCount+1))
-                    retrieveJobResults();
+                if (attemptCount < maxRetrievalAttempts) {
+                    console.log('Attempt ' + (attemptCount + 1));
+                    retrieveJobResults()
+                        .then(result => {
+                            console.log(result); // Job was successful
+                            clearInterval(intervalId); // Clear the interval
+                            enablePlayButton();
+                            syncSubtitles(); 
+                        })
+                        .catch(error => {
+                            console.error('Attempt failed:', error);
+                            // The interval will continue until maxRetrievalAttempts is reached
+                        });
                     attemptCount++;
                 } else {
                     console.log("Max attempts reached, stopping retries.");
                     clearInterval(intervalId);
-                    showError('Timed out')
+                    showError('Timed out');
                 }
-            }, attemptIntervalms); // Milliseconds between each attempt
-            restoreSubmitButton(); // Hide loading display
+            }, attemptIntervalms);
+            restoreSubmitButton();
         })
         .catch(err => {
             console.error(err);
             document.getElementById('result').textContent = 'Error: ' + err.message;
-            showError(err.message)
+            showError(err.message);
         });
 }
 
-// Function to retrieve job results
 function retrieveJobResults() {
-    const apiKey = document.getElementById('apiKey').value; // Get the API key from the input
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json; charset=utf-8',
-            'X-Hume-Api-Key': apiKey
-        }
-    };
-
-    fetch(`https://j1xvsqp6g0.execute-api.eu-west-3.amazonaws.com/Prod/${currentJobId}`, options)
-        .then(response => response.json())
-        .then(response => {
-            console.log(response);
-
-            // SELECTION PATTERN INSIDE THE RETURNED RESPONSE FROM HUME AI
-            // The first item in the array is the one we're interested in
-            let firstResult = response[0];
-            if (firstResult && firstResult.results && firstResult.results.predictions) {
-                let firstPrediction = firstResult.results.predictions[0];
-                
-                // Access prosody predictions if available
-                if (firstPrediction.models.prosody && firstPrediction.models.prosody.grouped_predictions.length > 0) {
-                    let prosodyPredictions = firstPrediction.models.prosody.grouped_predictions[0].predictions;
-                    prosodyPredictions.forEach(prediction => {
-                        analysisResults.prosodyPredictions.push(prediction);
-                    });
-                }
-                
-                // Access burst predictions if available
-                if (firstPrediction.models.burst && firstPrediction.models.burst.grouped_predictions.length > 0) {
-                    let burstPredictions = firstPrediction.models.burst.grouped_predictions[0].predictions;
-                    burstPredictions.forEach(prediction => {
-                        analysisResults.burstPredictions.push(prediction);
-                    });
-                }
+    return new Promise((resolve, reject) => {
+        const apiKey = document.getElementById('apiKey').value; // Get the API key from the input
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json; charset=utf-8',
+                'X-Hume-Api-Key': apiKey
             }
+        };
 
-            // For demonstration purposes, log the saved predictions
-            console.log('Prosody Predictions:', analysisResults.prosodyPredictions);
-            //console.log('Burst Predictions:', analysisResults.burstPredictions);
+        fetch(`https://blabla`, options)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
 
-            // Process each prediction in analysisResults.prosodyPredictions
-            analysisResults.prosodyPredictions = analysisResults.prosodyPredictions.map(processPrediction);
+                getPredictions(response);
+                console.log('Prosody Predictions:', analysisResults.prosodyPredictions);
+                //console.log('Burst Predictions:', analysisResults.burstPredictions);
 
-            // Build the string for prosody predictions
-            let prosodyResultText = 'Prosody:\n' + analysisResults.prosodyPredictions.map(p => JSON.stringify(p, null, 2)).join('\n');
+                // Process each prediction in analysisResults.prosodyPredictions
+                analysisResults.prosodyPredictions = analysisResults.prosodyPredictions.map(processPrediction);
 
-            // Log the processed predictions
-            console.log('Processed Prosody Predictions:', analysisResults.prosodyPredictions);
+                // Log the processed predictions
+                console.log('Processed Prosody Predictions:', analysisResults.prosodyPredictions);  
 
-            // Set the result text content
-            //document.getElementById('result').innerHTML = `<pre>${prosodyResultText}</pre>`;
-            document.getElementById('result').innerHTML = 'Done. You can play the audio now, we will display the subtitles. Refresh the page to go again.'; 
+                // If processing is successful:
+                resolve("Job successful"); // Or pass any relevant data
+            })
+            .catch(err => {
+                console.error(err);
+                reject("Job failed: " + err.message); // Reject the promise on error
+            });
+    });
+}
 
-            enablePlayButton();
-            syncSubtitles();        
-
-            // This function is triggered in fixed intervals. If successful, stop further attempts
-            clearInterval(intervalId);
-        })
-        .catch(err => {
-            console.error(err);
-            document.getElementById('result').textContent = 'Error (the transcription is probably not ready yet): ' + err.message + '... Retry soon.';
-        });
+function getPredictions(response) {
+    // The first item in the array is the one we're interested in
+    let firstResult = response[0];
+    if (firstResult && firstResult.results && firstResult.results.predictions) {
+        let firstPrediction = firstResult.results.predictions[0];
+        
+        // Access prosody predictions if available
+        if (firstPrediction.models.prosody && firstPrediction.models.prosody.grouped_predictions.length > 0) {
+            let prosodyPredictions = firstPrediction.models.prosody.grouped_predictions[0].predictions;
+            prosodyPredictions.forEach(prediction => {
+                analysisResults.prosodyPredictions.push(prediction);
+            });
+        }
+        
+        // Access burst predictions if available
+        if (firstPrediction.models.burst && firstPrediction.models.burst.grouped_predictions.length > 0) {
+            let burstPredictions = firstPrediction.models.burst.grouped_predictions[0].predictions;
+            burstPredictions.forEach(prediction => {
+                analysisResults.burstPredictions.push(prediction);
+            });
+        }
+    }
 }
 
 function enablePlayButton() {
