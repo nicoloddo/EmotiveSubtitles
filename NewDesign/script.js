@@ -172,6 +172,7 @@ function sendAudio(event) {
     let attemptCount = 0;
     let intervalId;
 
+    showLoading(); // Start loading display
     // Make the fetch request
     fetch('https://j1xvsqp6g0.execute-api.eu-west-3.amazonaws.com/Prod/proxy', options)
         .then(response => {
@@ -193,12 +194,15 @@ function sendAudio(event) {
                 } else {
                     console.log("Max attempts reached, stopping retries.");
                     clearInterval(intervalId);
+                    showError('Timed out')
                 }
             }, attemptIntervalms); // Milliseconds between each attempt
+            restoreSubmitButton(); // Hide loading display
         })
         .catch(err => {
             console.error(err);
             document.getElementById('result').textContent = 'Error: ' + err.message;
+            showError(err.message)
         });
 }
 
@@ -288,7 +292,10 @@ function disablePlayButton() {
 
 function animateButtonLoading(buttonId) {
     const button = document.getElementById(buttonId);
+    // Add the loading class to start the animation
     button.classList.add('loading');
+    // Remove class after 8 seconds
+    setTimeout(() => button.classList.remove('loading'), 8000);
 }
 
 function processPrediction(prediction) {
