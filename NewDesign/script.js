@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             enablePlayButton();
             syncSubtitles(); // Ensure this function is correctly set up to handle the new data
+            showLoadedDemo();
 
         } catch (error) {
             console.error('Failed to load demo predictions:', error);
@@ -142,6 +143,7 @@ function sendAudio(event) {
 
     // Update client
     disablePlayButton();
+    restoreDemoButton();
     console.log("Uploading...");
 
     // Get the file and API key from the form

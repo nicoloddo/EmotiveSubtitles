@@ -18,6 +18,7 @@
         .close-button:hover {
             color: #b91c1c; /* red-700 in Tailwind */
         }
+        
     </style>
 
 </head>
@@ -120,10 +121,13 @@
 
     <script>
         var originalSubmitButtonClass = '';
+        var originalDemoButtonClass = '';
 
         window.onload = function() {
             var button = document.getElementById('submitButton');
             originalSubmitButtonClass = button.className;
+            var button = document.getElementById('loadDemoButton');
+            originalDemoButtonClass = button.className;
         };
 
         function showLoading() {
@@ -152,6 +156,25 @@
             button.disabled = false;
             button.innerHTML = 'Emotional Transcribe';
             button.className = originalSubmitButtonClass;
+        }
+
+        function showLoadedDemo() {
+            var button = document.getElementById('loadDemoButton');
+            button.disabled = true;
+            button.innerHTML = `
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                </svg>
+            `;
+            button.className = originalDemoButtonClass; // first restore it
+            button.className = 'py-2 px-4 mb-2 sm:mb-0 rounded text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
+        }
+
+        function restoreDemoButton() {
+            var button = document.getElementById('loadDemoButton');
+            button.disabled = false;
+            button.innerHTML = 'Load Example';
+            button.className = originalDemoButtonClass;
         }
 
         // Function to open a modal
