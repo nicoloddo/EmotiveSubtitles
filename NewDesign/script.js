@@ -187,6 +187,7 @@ function sendAudio(event) {
             // Trigger the retrieveJobResults function every 10 seconds
             intervalId = setInterval(() => {
                 if (attemptCount < maxRetrievalAttempts) { // Max attempts
+                    console.log('Attempt ' + (attemptCount+1))
                     retrieveJobResults();
                     attemptCount++;
                 } else {
