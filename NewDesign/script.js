@@ -306,30 +306,6 @@ function getPredictions(response) {
     }
 }
 
-function enablePlayButton() {
-    // Enable the Play button
-    const playButton = document.getElementById('playTrigger');
-    playButton.classList.remove('bg-gray-400', 'cursor-not-allowed');
-    playButton.classList.add('bg-green-500', 'hover:bg-green-700');
-    playButton.removeAttribute('disabled');
-}
-
-function disablePlayButton() {
-    // Disable the Play button
-    const playButton = document.getElementById('playTrigger');
-    playButton.classList.remove('bg-green-500', 'hover:bg-green-700');
-    playButton.classList.add('bg-gray-400', 'cursor-not-allowed');
-    playButton.setAttribute('disabled', 'true');
-}
-
-function animateButtonLoading(buttonId) {
-    const button = document.getElementById(buttonId);
-    // Add the loading class to start the animation
-    button.classList.add('loading');
-    // Remove class after 8 seconds
-    setTimeout(() => button.classList.remove('loading'), 8000);
-}
-
 function processPrediction(prediction) {
     // Compute valence and arousal
     const { valence, arousal } = calculateValenceArousal(prediction.emotions);
