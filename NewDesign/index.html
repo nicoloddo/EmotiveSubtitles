@@ -9,6 +9,25 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
     <style>
+        /* Set a default font size */
+        html {
+            font-size: 16px; /* Base font size for larger screens */
+        }
+
+        /* Adjust font size for smaller screens */
+        @media (max-width: 600px) {
+            html {
+                font-size: 14px; /* Smaller base font size for small screens */
+            }
+        }
+
+        /* Adjust font size for very small or inverted aspect ratio screens */
+        @media (max-width: 480px), (max-height: 480px) and (orientation: portrait) {
+            html {
+                font-size: 12px; /* Even smaller base font size for very small screens */
+            }
+        }
+
         .close-button {
             color: #ef4444; /* red-500 in Tailwind */
             font-size: 1.5rem; /* similar to text-2xl in Tailwind */
@@ -41,16 +60,40 @@
         }
 
         #subtitles {
-            font-size: 2.2vw;
+            font-size: 5rem;
             color: black;
         }
 
         #emotions {
-            font-size: 1.1vw;
+            font-size: 1.8rem;
             color: black;
             margin-top: 9vh;
         }
 
+        .gradient-example {
+            background: linear-gradient(90deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%);
+            width: 100%;
+            height: 20px;
+            margin-top: 1vh;
+        }
+        .gradient-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+        }
+        .arousal-example {
+            text-align: center; /* Center align the text */
+        }
+        .small-arousal {
+            font-size: 1.8rem;
+            display: block; /* Each span takes the full width */
+            margin-top: 2vh;
+        }
+        .high-arousal {
+            font-size: 5rem;
+            display: block; /* Each span takes the full width */
+            margin-top: 2vh;
+        }
 
     </style>
 
@@ -71,12 +114,30 @@
             </nav>
         </div>
     </header>
+    <div class="container mx-auto my-12 p-8 bg-white bg-opacity-25 rounded-lg">
+        <div class="text-white mx-2 text-lg self-center">This is a prototype of emotional subtitle transcription for deaf people and children with emotion recognition problems. <a href="#" id="howLink" class="text-red-300 hover:text-red-400">How does it work?</a></div>
+        <div class="gradient-example"></div>
+        <div class="gradient-labels">
+            <span>Negative Emotion</span>
+            <span>Neutral</span>
+            <span>Positive Emotion</span>
+        </div>
+
+        <div class="arousal-example">        
+            <span class="high-arousal">High Arousal</span>
+        </div>
+        <div class="arousal-example">
+            <span class="small-arousal">Small Arousal</span>
+        </div>
+    </div>
+
     <main class="container mx-auto my-12 p-8 bg-white bg-opacity-25 rounded-lg">
         <form id="uploadForm" class="flex flex-col space-y-4">
             <div class="flex flex-col sm:flex-row items-center space-x-4 w-full">
                 <button id="loadDemoButton" type="button" class="py-2 px-4 bg-purple-600 hover:bg-purple-800 rounded text-white mb-2 sm:mb-0">Load Example</button>
                 <span class="text-white font-bold mx-2 text-lg self-center">OR</span>
                 <input type="file" id="audio" name="audio" class="p-2 rounded border border-gray-300 flex-grow mt-2 sm:mt-0">
+                <label for="audio" class="text-white mx-2 text-lg self-center">(Max size: 1MB)</label>
             </div>
 
             <div class="flex items-center space-x-4 w-full">
@@ -126,12 +187,24 @@
         </div>
     </div>
 
+    <!-- How does it work Information Modal -->
+    <div id="howModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="howModalTitle" role="dialog" aria-modal="true">
+        <div class="container mx-auto my-24 p-8 bg-white rounded-lg">
+            <div class="flex justify-between items-center">
+                <h2 id="howModalTitle" class="text-lg text-black">How does it work?</h2>
+                <button id="closeHowModal" class="close-button">&times;</button>
+            </div>
+            <div class="mt-4">
+                <!-- How it works information goes here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Privacy Information Modal -->
     <div id="privacyModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="privacyModalTitle" role="dialog" aria-modal="true">
         <div class="container mx-auto my-24 p-8 bg-white rounded-lg">
             <div class="flex justify-between items-center">
-                <h2 id="privacyModalTitle" class="text-lg">Privacy Information</h2>
+                <h2 id="privacyModalTitle" class="text-lg text-black">Privacy Information</h2>
                 <button id="closePrivacyModal" class="close-button">&times;</button>
             </div>
             <div class="mt-4">
@@ -144,7 +217,7 @@
     <div id="apiKeyModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="apiKeyModalTitle" role="dialog" aria-modal="true">
         <div class="container mx-auto my-24 p-8 bg-white rounded-lg">
             <div class="flex justify-between items-center">
-                <h2 id="apiKeyModalTitle" class="text-lg">API Key Information</h2>
+                <h2 id="apiKeyModalTitle" class="text-lg text-black">API Key Information</h2>
                 <button id="closeApiKeyModal" class="close-button">&times;</button>
             </div>
             <div class="mt-4">
@@ -246,8 +319,11 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            // HYPERLINK TRIGGERED MODALS:
+
             // Get the hyperlink by its ID
             const privacyInfoLink = document.getElementById('privacyInfoLink');
+            const howLink = document.getElementById('howLink');
 
             // Event listener for the Privacy Information hyperlink
             privacyInfoLink.addEventListener('click', (event) => {
@@ -257,11 +333,28 @@
                 openModal('privacyModal');
             });
 
+            // Event listener for the "How does it work?" hyperlink
+            howLink.addEventListener('click', (event) => {
+                // Prevent the default anchor behavior
+                event.preventDefault();
+                // Open the modal
+                openModal('howModal');
+            });
+
             // Get close privacy modal button by ID
             const closePrivacyModalButton = document.getElementById('closePrivacyModal');
 
             // Event listener for the close button on the privacy modal
             closePrivacyModalButton.addEventListener('click', () => closeModal('privacyModal'));
+
+            // Get close how modal button by ID
+            const closeHowModalButton = document.getElementById('closeHowModal');
+
+            // Event listener for the close button on the how modal
+            closeHowModalButton.addEventListener('click', () => closeModal('howModal'));
+
+
+            // BUTTON TRIGGERED MODALS:
 
             // Get the other buttons and modals by their IDs
             const playButton = document.getElementById('playTrigger');

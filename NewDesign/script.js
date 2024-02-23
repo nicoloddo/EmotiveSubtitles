@@ -1,6 +1,6 @@
-// Define min and max size in vw of the Arousal
-const arousalMinSize = 1.5; // vw
-const arousalMaxSize = 4; // vw
+// Define min and max size in rem of the Arousal
+const arousalMinSize = 1.8; // rem
+const arousalMaxSize = 5; // rem
 
 // Set Retrieval attempts settings
 const maxRetrievalAttempts = 5;
@@ -412,7 +412,7 @@ function getSizeForArousal(arousal) {
     // Interpolate between min and max size based on normalized arousal
     const size = arousalMinSize + normalizedArousal * (arousalMaxSize - arousalMinSize);
 
-    return size + 'vw'; // Return size in viewport width units
+    return size + 'rem'; // Return size in rem units
 }
 
 function calculateValenceArousal(emotions) {
