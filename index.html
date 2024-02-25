@@ -140,13 +140,9 @@
                 <label for="audio" class="text-white mx-2 text-lg self-center">(Max size: 1MB)</label>
             </div>
 
-            <div class="flex items-center space-x-4 w-full">
-                <input type="text" id="apiKey" name="apiKey" placeholder="Enter Hume AI API Key" class="p-2 rounded border border-gray-300 flex-grow text-gray-700">
-                <button id="apiInfo" type="button" class="py-2 px-4 rounded border border-gray-300 text-white font-bold bg-gray-000 hover:bg-purple-800 flex-shrink-0">?</button>
-            </div>
-
             <div class="text-sm mt-1 text-gray-200">
-                I will not have access to your API key (nor to the submitted file). For more information consult the <a href="#" id="privacyInfoLink" class="text-red-300 hover:text-red-400">Privacy Information</a> or click on the "?" button.
+                By clicking on "Emomtional Transcribe", you agree to the <a href="#" id="termsInfoLink" class="text-red-300 hover:text-red-400">Terms of Use</a> and confirm your compliance with Hume AI's <a href="https://beta.hume.ai/policies/terms-of-use" class="text-red-300 hover:text-red-400">Terms of Use</a>.<br>
+                I am an independent developer and this is a non-profit tool, developed for my own fun. Your recordings are processed solely by Hume AI to provide this service.
             </div>     
 
             <button type="submit" id="submitButton" class="bg-blue-500 hover:bg-blue-700 text-white py-2.5 px-5 font-bold rounded cursor-pointer">
@@ -196,47 +192,35 @@
             </div>
             <div class="mt-4 text-black">
                 <!-- How it works information goes here -->
-                This tool works by leveraging Hume AI's API. It was in fact built for me to explore their emotional API.<br>
+                EmotiveSubtitles works by using Hume AI's technology to analyze emotions in speech. Here's how it works:<br>
                 <br>
-                Hume AI transcribes the text of the audio and labels each utterance's emotional content. This content is defined as intensity of 48 different emotions.<br>
-                I then perform a dimensionality reduction to obtain values of Valence and Arousal. To do this, all 48 emotions are labeled for Arousal and Valence. Given the 48 intensities of each emotion inside the utterance, I can therefore perform a weighted average to obtain the Valence and Arousal of each utterance.<br>
-                These values are therefore dependant on the Valence and Arousal that are assigned to each of the 48 emotions.<br>
+                - When you use the tool, Hume AI listens to the audio, transcribes it, and identifies the emotions in what's being said. More precisely, Hume AI measures how strong each emotion is from a list of 48 main emotions. This is done for every spoken sentence in the recording.<br>
                 <br>
-                I utilize this approach because I cannot set up a server of my own to perform complex dimensionality reduction, and this approach directly gives me 2 intuitive dimensions to visualize. I will make it possible to modify the values of Arousal and Valence of each emotion, in the meantime, the default values utilized right now are approximately informed by scientific research.
+                - To make it easy to understand, I use a technique (dimensionality reduction) that turns these 48 emotion values into two main parameters: Valence (how positive or negative the emotions are) and Arousal (how calm or excited the emotions are). This is done by defining values of Valence and Arousal for every one of the 48 emotions and performing a weighted average.<br>
+                <br>
+                - This approach to dimensionality reduction is very cost efficient, allowing me to run it directly on your browser (which was a hard requirement for the scope of this tool...). Plus, it gives back semantically informative values, which have a rather intuitive meaning for the user: Valence and Arousal.<br>
+                <br>
+                - In the future, you'll be able to adjust the Valence and Arousal defined for each emotion, which directly impacts the calculations. For now, the default settings are based on scientific research, giving a generally accurate representation of emotional tones.<br>
+                <br>
+                In short, EmotiveSubtitles makes it easy to see the emotional undertones in speech by converting complex emotional data into two understandable dimensions: whether the emotions are more positive or negative, and whether they are calm or excited, and then applying them to the styling of the subtitles. The 3 emotions with strongest intensity are also displayed under the sentence.<br>
+                <br>
             </div>
         </div>
     </div>
 
-    <!-- Privacy Information Modal -->
-    <div id="privacyModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="privacyModalTitle" role="dialog" aria-modal="true">
+    <!-- Terms Information Modal -->
+    <div id="termsModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="termsModalTitle" role="dialog" aria-modal="true">
         <div class="container mx-auto my-24 p-8 bg-white rounded-lg">
             <div class="flex justify-between items-center">
-                <h2 id="privacyModalTitle" class="text-lg text-black">Privacy Information</h2>
-                <button id="closePrivacyModal" class="close-button">&times;</button>
+                <h2 id="termsModalTitle" class="text-lg text-black">Terms of Use</h2>
+                <button id="closeTermsModal" class="close-button">&times;</button>
             </div>
             <div class="mt-4 text-black">
-                <!-- Your privacy information goes here -->
-                I will not have access to your API Key and I do not store any user data. The requests are passed to my proxy server, which directly passes them to the Hume AI API. This is due to the fact that Hume AI does not allow requests from your browser.<br>
+                <!-- Your terms information goes here -->
+                I am an independent developer, and EmotiveSubtitles is a prototype tool provided 'as is' for use at your own risk.<br>
                 <br>
-                Everything you fill in this site is passed through to Hume AI without storing nor accessing anything. Your key and recordings will not be accessible to me.
-            </div>
-        </div>
-    </div>
-
-    <!-- API Key Information Modal -->
-    <div id="apiKeyModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full" aria-labelledby="apiKeyModalTitle" role="dialog" aria-modal="true">
-        <div class="container mx-auto my-24 p-8 bg-white rounded-lg">
-            <div class="flex justify-between items-center">
-                <h2 id="apiKeyModalTitle" class="text-lg text-black">API Key Information</h2>
-                <button id="closeApiKeyModal" class="close-button">&times;</button>
-            </div>
-            <div class="mt-4 text-black">
-                <!-- Your API key information goes here -->
-                This tool utilizes Hume AI's API to perform emotional analysis.<br>
-                To obtain an API key, you can Sign Up here: https://beta.hume.ai/ and click on "API Keys" on the sidebar. Copy-paste the key in the field to utilize the tool.<br>
-                You will get 20$ for free, which you can use for approximately 13 hours of recordings!<br>
-                <br>
-                I will not have access to your API Key and I do not store any user data. The requests are passed to my proxy server, which directly passes them to the Hume AI API. This is due to the fact that Hume AI does not allow requests from your browser.
+                I prioritize your privacy and do not store your personal data. To ensure the API's correct functioning, I maintain logs, which are periodically deleted and not used for any analysis or data retrieval. Your recordings are processed solely by Hume AI to provide this service. All requests are securely routed through my proxy server to Hume AI, adhering to their policy guidelines.<br>
+                Be aware that you have to comply with Hume AI's Terms of Service as well. I do not take responsibility for any violations of these terms by users of EmotiveSubtitles.
             </div>
         </div>
     </div>
@@ -244,6 +228,7 @@
     <footer class="py-4 bg-opacity-50 mt-12">
         <div class="container mx-auto px-6 text-center">
             <!-- Additional links or information can go here. -->
+            I pay to keep this service up on my own, please don't misuse it... There is a collective limit of 100 requests per month. For any inquiries: nicoloddo.r@gmail.com
         </div>
     </footer>
 
@@ -337,15 +322,15 @@
             // HYPERLINK TRIGGERED MODALS:
 
             // Get the hyperlink by its ID
-            const privacyInfoLink = document.getElementById('privacyInfoLink');
+            const termsInfoLink = document.getElementById('termsInfoLink');
             const howLink = document.getElementById('howLink');
 
-            // Event listener for the Privacy Information hyperlink
-            privacyInfoLink.addEventListener('click', (event) => {
+            // Event listener for the Terms Information hyperlink
+            termsInfoLink.addEventListener('click', (event) => {
                 // Prevent the default anchor behavior
                 event.preventDefault();
                 // Open the modal
-                openModal('privacyModal');
+                openModal('termsModal');
             });
 
             // Event listener for the "How does it work?" hyperlink
@@ -356,11 +341,11 @@
                 openModal('howModal');
             });
 
-            // Get close privacy modal button by ID
-            const closePrivacyModalButton = document.getElementById('closePrivacyModal');
+            // Get close terms modal button by ID
+            const closeTermsModalButton = document.getElementById('closeTermsModal');
 
-            // Event listener for the close button on the privacy modal
-            closePrivacyModalButton.addEventListener('click', () => closeModal('privacyModal'));
+            // Event listener for the close button on the terms modal
+            closeTermsModalButton.addEventListener('click', () => closeModal('termsModal'));
 
             // Get close how modal button by ID
             const closeHowModalButton = document.getElementById('closeHowModal');

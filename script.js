@@ -159,9 +159,9 @@ function sendAudio(event) {
     restoreDemoButton();
     console.log("Uploading...");
 
-    // Get the file and API key from the form
+    // Get the file from the form
     const fileInput = document.getElementById('audio');
-    const apiKey = document.getElementById('apiKey').value;
+    //const apiKey = document.getElementById('apiKey').value;
     const file = fileInput.files[0];
 
     // Check if the file is selected
@@ -171,11 +171,13 @@ function sendAudio(event) {
         return; // Exit the function if no file is selected
     }
 
+    /*
     if (!apiKey) {
         console.error("No API key.");
         showError('Missing API key')
         return; // Exit the function if no API key is given
     }
+    */
 
     console.log("File to be uploaded:", file);
 
@@ -205,7 +207,7 @@ function sendAudio(event) {
         method: 'POST',
         headers: {
             accept: 'application/json',
-            'X-Hume-Api-Key': apiKey
+            //'X-Hume-Api-Key': apiKey
             // Do not set Content-Type here, it will be set automatically by the browser when FormData is used
         },
         body: formData
@@ -261,12 +263,12 @@ function sendAudio(event) {
 
 function retrieveJobResults() {
     return new Promise((resolve, reject) => {
-        const apiKey = document.getElementById('apiKey').value; // Get the API key from the input
+        //const apiKey = document.getElementById('apiKey').value; // Get the API key from the input
         const options = {
             method: 'GET',
             headers: {
                 accept: 'application/json; charset=utf-8',
-                'X-Hume-Api-Key': apiKey
+                //'X-Hume-Api-Key': apiKey
             }
         };
 
