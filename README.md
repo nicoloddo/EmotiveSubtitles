@@ -1,6 +1,6 @@
 # EmotiveSubtitles
 
-This is a prototype of emotional subtitle transcription for deaf people and children with emotion recognition problems.
+This is a prototype of emotional subtitle transcription, designed to aid deaf individuals, people with ASD, or others who face challenges in recognizing and interpreting emotions.
 
 The valence of the speaker (how negative or positive the emotion is) is indicated by the color of the subtitle. The arousal, is indicated by how big the subtitle is.
 
