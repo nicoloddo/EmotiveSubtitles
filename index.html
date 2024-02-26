@@ -115,8 +115,8 @@
         </div>
     </header>
     <div class="container mx-auto my-12 p-8 bg-white bg-opacity-25 rounded-lg">
-        <div class="text-white mx-2 text-lg self-center">This is a prototype of emotional subtitle transcription for deaf people and children with emotion recognition problems.</div>
-        <div class="text-white mx-2 text-lg self-center">The subtitles will change Color based on Emotional Valence and will change Font Size depending on Emotional Arousal.  <a href="#" id="howLink" class="text-red-300 hover:text-red-400">How does it work?</a></div>
+        <div class="text-white mx-2 text-lg self-center">This is a prototype of emotional subtitle transcription, designed to aid deaf individuals, people with ASD, or others who face challenges in recognizing and interpreting emotions.</div>
+        <div class="text-white mx-2 text-lg self-center">The subtitles will change Color based on how positive or negative the emotions are (Valence), and Font Size depending on how calm or excited (Arousal).  <a href="#" id="howLink" class="text-red-300 hover:text-red-400">How does it work?</a></div>
         <div class="gradient-example"></div>
         <div class="gradient-labels">
             <span>Negative Emotion</span>
@@ -141,7 +141,7 @@
             </div>
 
             <div class="text-sm mt-1 text-gray-200">
-                By clicking on "Emomtional Transcribe", you agree to the <a href="#" id="termsInfoLink" class="text-red-300 hover:text-red-400">Terms of Use</a> and confirm your compliance with Hume AI's <a href="https://beta.hume.ai/policies/terms-of-use" class="text-red-300 hover:text-red-400">Terms of Use</a>.<br>
+                By clicking on "Emomtional Transcribe", you agree to the <a href="#" id="termsInfoLink" class="text-red-300 hover:text-red-400">Terms of Use</a> and confirm your compliance with Hume AI's <a href="https://beta.hume.ai/policies/terms-of-use" class="text-red-300 hover:text-red-400" target="_blank">Terms of Use</a>.<br>
                 I am an independent developer and this is a non-profit tool, developed for my own fun. Your recordings are processed solely by Hume AI to provide this service.
             </div>     
 
@@ -192,7 +192,7 @@
             </div>
             <div class="mt-4 text-black">
                 <!-- How it works information goes here -->
-                EmotiveSubtitles works by using Hume AI's technology to analyze emotions in speech. Here's how it works:<br>
+                EmotiveSubtitles utilizes Hume AI's technology to analyze emotions in speech. Here's how it works:<br>
                 <br>
                 - When you use the tool, Hume AI listens to the audio, transcribes it, and identifies the emotions in what's being said. More precisely, Hume AI measures how strong each emotion is from a list of 48 main emotions. This is done for every spoken sentence in the recording.<br>
                 <br>
@@ -203,6 +203,8 @@
                 - In the future, you'll be able to adjust the Valence and Arousal defined for each emotion, which directly impacts the calculations. For now, the default settings are based on scientific research, giving a generally accurate representation of emotional tones.<br>
                 <br>
                 In short, EmotiveSubtitles makes it easy to see the emotional undertones in speech by converting complex emotional data into two understandable dimensions: whether the emotions are more positive or negative, and whether they are calm or excited, and then applying them to the styling of the subtitles. The 3 emotions with strongest intensity are also displayed under the sentence.<br>
+                <br>
+                I hope this can inspire the realization of even more useful and usable solutions in the field of media accessibility.
                 <br>
             </div>
         </div>
@@ -217,7 +219,7 @@
             </div>
             <div class="mt-4 text-black">
                 <!-- Your terms information goes here -->
-                I am an independent developer, and EmotiveSubtitles is a prototype tool provided 'as is' for use at your own risk.<br>
+                EmotiveSubtitles is a prototype tool provided 'as is' for use at your own risk.<br>
                 <br>
                 I prioritize your privacy and do not store your personal data. To ensure the API's correct functioning, I maintain logs, which are periodically deleted and not used for any analysis or data retrieval. Your recordings are processed solely by Hume AI to provide this service. All requests are securely routed through my proxy server to Hume AI, adhering to their policy guidelines.<br>
                 Be aware that you have to comply with Hume AI's Terms of Service as well. I do not take responsibility for any violations of these terms by users of EmotiveSubtitles.
@@ -361,21 +363,11 @@
             const playModal = document.getElementById('playModal');
             const closePlayModalButton = document.getElementById('closePlayModal');
 
-            const apiInfoButton = document.getElementById('apiInfo');
-            const apiKeyModal = document.getElementById('apiKeyModal');
-            const closeApiKeyModalButton = document.getElementById('closeApiKeyModal');
-
             // Event listener for the Play button
             playButton.addEventListener('click', () => openModal('playModal'));
 
             // Event listener for the close button on the play modal
             closePlayModalButton.addEventListener('click', () => closeModal('playModal'));
-
-            // Event listener for the "?" button
-            apiInfoButton.addEventListener('click', () => openModal('apiKeyModal'));
-
-            // Event listener for the close button on the API key modal
-            closeApiKeyModalButton.addEventListener('click', () => closeModal('apiKeyModal'));
         });
     </script>
 
