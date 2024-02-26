@@ -32,13 +32,13 @@ let emotionScores = {
     "Adoration": {"valence": 0.7, "arousal": 0.4},
     "Aesthetic Appreciation": {"valence": 0.8, "arousal": 0.1},
     "Amusement": {"valence": 0.9, "arousal": 0.6},
-    "Anger": {"valence": -0.6, "arousal": 0.6},
-    "Anxiety": {"valence": -0.7, "arousal": 0.7},
-    "Awe": {"valence": 0.5, "arousal": 0.4},
+    "Anger": {"valence": -0.7, "arousal": 0.9},
+    "Anxiety": {"valence": -0.8, "arousal": 0.8},
+    "Awe": {"valence": 0.8, "arousal": 0.4},
     "Awkwardness": {"valence": -0.3, "arousal": 0.2},
-    "Boredom": {"valence": -0.6, "arousal": -0.6},
-    "Calmness": {"valence": 0.7, "arousal": -0.3},
-    "Concentration": {"valence": 0.1, "arousal": 0.5},
+    "Boredom": {"valence": -0.6, "arousal": -0.8},
+    "Calmness": {"valence": 0.7, "arousal": -1},
+    "Concentration": {"valence": 0.1, "arousal": 0.6},
     "Confusion": {"valence": -0.2, "arousal": 0.3},
     "Contemplation": {"valence": 0.4, "arousal": -0.1},
     "Contempt": {"valence": -0.5, "arousal": 0.2},
@@ -55,8 +55,8 @@ let emotionScores = {
     "Empathic Pain": {"valence": -0.6, "arousal": 0.2},
     "Entrancement": {"valence": 0.6, "arousal": 0.1},
     "Envy": {"valence": -0.6, "arousal": 0.2},
-    "Excitement": {"valence": 0.8, "arousal": 0.9},
-    "Fear": {"valence": -0.8, "arousal": 0.9},
+    "Excitement": {"valence": 0.8, "arousal": 1},
+    "Fear": {"valence": -0.8, "arousal": 1},
     "Guilt": {"valence": -0.6, "arousal": -0.2},
     "Horror": {"valence": -0.9, "arousal": 0.7},
     "Interest": {"valence": 0.6, "arousal": 0.5},
@@ -64,9 +64,9 @@ let emotionScores = {
     "Love": {"valence": 1.0, "arousal": 0.3},
     "Nostalgia": {"valence": 0.5, "arousal": -0.4},
     "Pain": {"valence": -0.9, "arousal": 0.5},
-    "Pride": {"valence": 0.8, "arousal": 0.6},
+    "Pride": {"valence": 0.8, "arousal": 0.4},
     "Realization": {"valence": 0.1, "arousal": 0.4},
-    "Relief": {"valence": 0.7, "arousal": -0.3},
+    "Relief": {"valence": 0.7, "arousal": 0.4},
     "Romance": {"valence": 0.7, "arousal": 0.3},
     "Sadness": {"valence": -0.9, "arousal": -0.5},
     "Satisfaction": {"valence": 0.8, "arousal": 0.2},
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('loadDemoButton').addEventListener('click', async function() {
         // Set the audio player source to the demo audio file
         const audioPlayer = document.getElementById('audioPlayer');
-        audioPlayer.src = './demo.wav';
+        audioPlayer.src = './demo.mp3';
 
         try {
             // Fetch the demo predictions JSON
